@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Needy Serve</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
 </resources>
