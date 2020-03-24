@@ -75,13 +75,22 @@
                     android:hint="Account Type"/>
             </android.support.design.widget.TextInputLayout>
 
-            <TextView
+            <CheckBox
+                android:id="@+id/ch_rememberme"
+                style="@style/viewParent"
+                android:text="Remember Me"
+                android:textSize="@dimen/newsMoreTextSize"
+                android:layout_gravity="start"
+                android:textColor="@color/primaryTextColor"
+                android:layout_marginTop="20dp"
+                />
+            <!--<TextView
                 style="@style/viewParent"
                 android:text="Forgot Password?"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:layout_gravity="end"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"/>-->
 
             <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                 android:id="@+id/cirLoginButton"
