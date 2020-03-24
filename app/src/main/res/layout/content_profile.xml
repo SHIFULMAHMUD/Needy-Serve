@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ProfileActivity"
+    tools:context=".activity.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
         <LinearLayout
@@ -28,13 +28,13 @@
                     style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:id="@+id/nameTextView"
                     android:text="Name"
                     android:layout_toRightOf="@id/nameImageView"
                 style="@style/profileDetailsTextMain" />
 
                 <TextView
-                    android:text="Shiful Mahmud"
+                    android:id="@+id/nameTextView"
+                    android:hint="Your Name"
                     android:layout_toRightOf="@id/nameImageView"
                     style="@style/profileDetailsMiniText" />
 
@@ -53,7 +53,8 @@
                     style="@style/profileDetailsTextMain"/>
 
                 <TextView
-                    android:text="+880-1516116489"
+                    android:id="@+id/mobileTextview"
+                    android:hint="Your Mobile Number"
                     android:layout_toRightOf="@id/mobileImageView"
                     style="@style/profileDetailsMiniText" />
 
@@ -63,16 +64,17 @@
             <RelativeLayout style="@style/profileDetailsLayout">
                 <ImageView
                     android:id="@+id/emailImageView"
-                    android:src="@drawable/ic_email"
+                    android:src="@drawable/ic_address"
                     style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="Email"
+                    android:text="Division"
                     android:layout_toRightOf="@id/emailImageView"
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
-                    android:text="shifulmahmudkhan@gmail.com"
+                    android:id="@+id/divisionTextview"
+                    android:hint="Your Division"
                     android:layout_toRightOf="@id/emailImageView"
                     style="@style/profileDetailsMiniText" />
 
@@ -87,14 +89,13 @@
 
                 <TextView
                     android:text="Address"
-                    android:id="@+id/headingAddress"
                     android:layout_toRightOf="@id/addressImageView"
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
-                    android:text="ARISHA BHABAN, 826/B, Mollapara, Niribili R/A, North Agrabad, Chattogram, Bangladesh."
+                    android:hint="Your full address"
                     android:layout_toRightOf="@id/addressImageView"
-                    android:layout_below="@id/headingAddress"
+                    android:id="@+id/addressTextview"
                     style="@style/profileDetailsMiniText" />
 
             </RelativeLayout>
@@ -103,16 +104,17 @@
             <RelativeLayout style="@style/profileDetailsLayout">
                 <ImageView
                     android:id="@+id/dobImageView"
-                    android:src="@drawable/ic_dob"
+                    android:src="@drawable/ic_name"
                     style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="D.O.B"
+                    android:text="Account Type"
                     android:layout_toRightOf="@id/dobImageView"
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
-                    android:text="09-09-1992"
+                    android:hint="Your Account Type"
+                    android:id="@+id/accounttypeTextview"
                     android:layout_toRightOf="@id/dobImageView"
                     style="@style/profileDetailsMiniText" />
 

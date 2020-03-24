@@ -1,4 +1,4 @@
-package shiful.android.needyserve;
+package shiful.android.needyserve.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
+import shiful.android.needyserve.Constant;
+import shiful.android.needyserve.R;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText accouttypeET, divisionET,nameET,cellET,addressEt,passwordET;

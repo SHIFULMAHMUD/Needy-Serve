@@ -1,4 +1,4 @@
-package shiful.android.needyserve;
+package shiful.android.needyserve.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -14,7 +14,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -33,6 +32,8 @@ import java.util.Map;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import es.dmoral.toasty.Toasty;
+import shiful.android.needyserve.Constant;
+import shiful.android.needyserve.R;
 
 
 public class LoginActivity extends AppCompatActivity implements TextWatcher,
@@ -194,7 +195,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
                                 loading.dismiss();
                                 //Starting Home activity
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
                                 startActivity(intent);
                                 Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
                                 finish();

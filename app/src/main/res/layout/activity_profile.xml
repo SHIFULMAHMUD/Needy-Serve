@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ProfileActivity"
+    tools:context=".activity.ProfileActivity"
     android:background="@color/profileBackground">
 
     <android.support.design.widget.AppBarLayout
@@ -37,22 +37,26 @@
                     android:background="@drawable/profile_bk">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/profile_round" />
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="40dp"
+                        android:id="@+id/profile_image"
+                        android:src="@drawable/male" />
 
                     <TextView
+                        android:id="@+id/headingname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shiful Mahmud"
-                        android:textSize="28dp"
-                        android:textStyle="bold"/>
+                        android:hint="Your Name"
+                        android:textSize="28sp"
+                        />
 
                     <TextView
+                        android:id="@+id/heading_accounttype"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="shifulmahmudkhan@gmail.com"
-                        android:textSize="12dp"
+                        android:hint="Account Type"
+                        android:textSize="14sp"
                         android:textStyle="bold"/>
 
                     <RelativeLayout
@@ -70,7 +74,8 @@
                             android:background="@drawable/profile_bk"/>
 
                         <TextView
-                            android:text="Back to\nHome"
+                            android:id="@+id/backTextview"
+                            android:text="Back to Home"
                             style="@style/profileStyledBackButton" />
                     </RelativeLayout>
 

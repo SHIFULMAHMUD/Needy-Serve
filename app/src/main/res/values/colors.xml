@@ -16,6 +16,9 @@
     <!--normal colors-->
     <color name="darkTextColor">#020000</color>
 
+    <color name="cardColor">#ffffff</color>
+    <color name="textcardColor">#3f3f3f</color>
+    <color name="logoColor">#EC6424</color>
 
     <!--colors for light mode-->
     <color name="contentTextColor">#020000</color>
