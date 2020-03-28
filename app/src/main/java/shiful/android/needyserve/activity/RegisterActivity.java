@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -41,6 +42,10 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Registration");
+
         changeStatusBarColor();
         accouttypeET =findViewById(R.id.editTextAccountType);
         divisionET =findViewById(R.id.editTextDivName);
@@ -171,7 +176,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void onLoginClick(View view){
         startActivity(new Intent(this,LoginActivity.class));
         overridePendingTransition(R.anim.slide_in_left,android.R.anim.slide_out_right);
-
+        finish();
     }
     private void sign_up() {
 
@@ -243,18 +248,18 @@ public class RegisterActivity extends AppCompatActivity {
                     if (response.equals("success")) {
                         loading.dismiss();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        Toasty.success(RegisterActivity.this, "Registration successful", Toast.LENGTH_LONG).show();
+                        Toasty.success(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     } else if (response.equals("exists")) {
 
-                        Toasty.warning(RegisterActivity.this, "User already exists!", Toast.LENGTH_LONG).show();
+                        Toasty.warning(RegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
 
                     else if (response.equals("failure")) {
 
-                        Toasty.error(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_LONG).show();
+                        Toasty.error(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
@@ -264,7 +269,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            Toasty.error(RegisterActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_LONG).show();
+                            Toasty.error(RegisterActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }

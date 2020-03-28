@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/relative_list"
+    android:padding="5dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:padding="5dp"
+        android:id="@+id/list_icon"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/events"/>
+
+    <TextView
+        android:id="@+id/txt_event_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/list_icon"
+        android:paddingTop="7dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/mo_me"
+        android:hint="Event Name"
+        android:textSize="16sp"
+         />
+
+    <TextView
+        android:id="@+id/txt_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/list_icon"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/txt_event_name"
+        android:textColor="@android:color/black"
+        android:hint="time"
+        android:textSize="15sp"
+        />
+
+</RelativeLayout>

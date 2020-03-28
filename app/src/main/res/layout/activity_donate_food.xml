@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DonateFoodActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_layout">
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/themeColor"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            </android.support.design.widget.AppBarLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar_layout">
+
+            <LinearLayout
+                android:id="@+id/top_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="horizontal"
+                android:background="@drawable/handband">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food Donation Form"
+                android:layout_below="@+id/top_image"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:id="@+id/heading_text"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"/>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputName"
+                style="@style/parent"
+                android:layout_below="@+id/heading_text"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Donor Name"
+                    style="@style/modifiedEditText"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/mo_me"
+                    android:id="@+id/nameEdittext"
+                    android:textSize="16sp"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputPhone"
+                style="@style/parent"
+                android:layout_below="@+id/textInputName"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/modifiedEditText"
+                    android:layout_margin="10dp"
+                    android:hint="Mobile Number"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/mo_me"
+                    android:id="@+id/mobileEdittext"
+                    android:textSize="16sp"
+                    android:inputType="phone"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputQuantity"
+                style="@style/parent"
+                android:layout_below="@+id/textInputPhone"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Quantity (Enough to feed minimum)"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/mo_me"
+                    android:focusable="false"
+                    android:layout_margin="10dp"
+                    style="@style/modifiedEditText"
+                    android:id="@+id/quantityEdittext"
+                    android:textSize="16sp"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputAddress"
+                style="@style/parent"
+                android:layout_below="@+id/textInputQuantity"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Address"
+                    style="@style/modifiedEditText"
+                    android:textColor="@android:color/black"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/mo_me"
+                    android:maxLines="1"
+                    android:id="@+id/addressEdittext"
+                    android:textSize="16sp"/>
+            </android.support.design.widget.TextInputLayout>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/radiogroup_food"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/textInputAddress">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:id="@+id/rb1"
+                    android:fontFamily="@font/mo_me"
+                    android:text="I will drop the food myself"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:id="@+id/rb2"
+                    android:fontFamily="@font/mo_me"
+                    android:layout_marginTop="10dp"
+                    android:text="Schedule a pickup"
+                    />
+            </RadioGroup>
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/cirSubmitButton"
+                style="@style/loginButton"
+                android:layout_below="@+id/radiogroup_food"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="#FFF"
+                android:text="Submit form"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                app:spinning_bar_padding="6dp"
+                app:initialCornerAngle="27dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    </ScrollView>

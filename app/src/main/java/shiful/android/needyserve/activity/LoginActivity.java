@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     CircularProgressButton loginBtn;
     //EditText object declaration
     EditText etxtCell,etxtPassword,accouttypeEdt;
-
+    String text;
     //ProgressDialog object declaration
     private ProgressDialog loading;
     private static long back_pressed;
@@ -62,6 +63,10 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
         setContentView(R.layout.activity_login);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Login");
+
         etxtCell=findViewById(R.id.editTextMobile);
         etxtPassword=findViewById(R.id.editTextPassword);
         rem_userpass = findViewById(R.id.ch_rememberme);
@@ -84,10 +89,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                         switch (position) {
                             case 0:
                                 accouttypeEdt.setText(accountList[position]);
+                                text=accountList[position];
                                 break;
 
                             case 1:
                                 accouttypeEdt.setText(accountList[position]);
+                                text=accountList[position];
                                 break;
                         }
                     }
@@ -195,22 +202,33 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
                                 loading.dismiss();
                                 //Starting Home activity
-                                Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
-                                startActivity(intent);
-                                Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
-                                finish();
+                                if (text.equals("Donor"))
+                                {
+                                    Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                }
+                                if (text.equals("Volunteer"))
+                                {
+                                    Intent intent = new Intent(LoginActivity.this, VolunteerActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                }
+
                             }
                             else if(response.equals("failure")) {
                                 //If the server response is not success
                                 //Displaying an error message on toast
-                                Toasty.error(LoginActivity.this, "Invalid Login", Toast.LENGTH_LONG).show();
+                                Toasty.error(LoginActivity.this, "Invalid Login", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
                             }
 
                             else {
                                 //If the server response is not success
                                 //Displaying an error message on toast
-                                Toasty.error(LoginActivity.this, "Invalid user cell or password", Toast.LENGTH_LONG).show();
+                                Toasty.error(LoginActivity.this, "Invalid user cell or password", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
                             }
                         }
@@ -221,7 +239,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                         public void onErrorResponse(VolleyError error) {
                             //You can handle error here if you want
 
-                            Toasty.error(LoginActivity.this, "There is an error !!!", Toast.LENGTH_LONG).show();
+                            Toasty.error(LoginActivity.this, "There is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }) {
@@ -304,6 +322,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     public void onLoginClick(View View){
         startActivity(new Intent(this,RegisterActivity.class));
         overridePendingTransition(R.anim.slide_in_right,R.anim.stay);
-
+        finish();
     }
 }

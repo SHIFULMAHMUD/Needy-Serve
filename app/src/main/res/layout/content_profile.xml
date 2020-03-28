@@ -18,7 +18,7 @@
 
             <TextView
                 style="@style/headerText"
-                android:text="Account Info"
+                android:text="Account Information"
                 android:layout_marginBottom="20dp"/>
 
             <RelativeLayout style="@style/profileDetailsLayout">
@@ -89,6 +89,7 @@
 
                 <TextView
                     android:text="Address"
+                    android:id="@+id/address_heading"
                     android:layout_toRightOf="@id/addressImageView"
                     style="@style/profileDetailsTextMain" />
 
@@ -96,6 +97,7 @@
                     android:hint="Your full address"
                     android:layout_toRightOf="@id/addressImageView"
                     android:id="@+id/addressTextview"
+                    android:layout_below="@+id/address_heading"
                     style="@style/profileDetailsMiniText" />
 
             </RelativeLayout>

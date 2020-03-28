@@ -62,14 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
         addresstv=findViewById(R.id.addressTextview);
         accounttypetv=findViewById(R.id.accounttypeTextview);
         profileiv=findViewById(R.id.profile_image);
-        backtv=findViewById(R.id.backTextview);
-        backtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ProfileActivity.this, DonorActivity.class);
-                startActivity(intent);
-            }
-        });
+
         //Fetching cell from shared preferences
         SharedPreferences sharedPreferences;
         sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -108,7 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         loading.dismiss();
-                        Toasty.error(ProfileActivity.this, "Network Error!", Toast.LENGTH_LONG).show();
+                        Toasty.error(ProfileActivity.this, "Network Error!", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -129,7 +122,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             if (result.length()==0)
             {
-                Toasty.info(ProfileActivity.this, "No Data Available!", Toast.LENGTH_LONG).show();
+                Toasty.info(ProfileActivity.this, "No Data Available!", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ProfileActivity.this, DonorActivity.class);
 
@@ -149,6 +142,30 @@ public class ProfileActivity extends AppCompatActivity {
                     String account_type = jo.getString(Constant.KEY_AC_TYPE);
 
                     //insert data into array for put extra
+
+                    if (account_type.equals("Donor"))
+                    {
+                        backtv=findViewById(R.id.backTextview);
+                        backtv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent=new Intent(ProfileActivity.this, DonorActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                    }
+                    if (account_type.equals("Volunteer"))
+                    {
+                        backtv=findViewById(R.id.backTextview);
+                        backtv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent=new Intent(ProfileActivity.this, VolunteerActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }
 
                     userName[i] = name;
                     userCell[i] = cell;
