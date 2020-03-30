@@ -2,18 +2,20 @@ package shiful.android.needyserve.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,6 +26,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,45 +38,41 @@ import es.dmoral.toasty.Toasty;
 import shiful.android.needyserve.Constant;
 import shiful.android.needyserve.R;
 
-public class RegisterActivity extends AppCompatActivity {
-    EditText accouttypeET, divisionET,nameET,cellET,addressEt,passwordET;
-    Button registerBtn;
-    ProgressDialog loading;
-    private static long back_pressed;
-    private static final int TIME_DELAY = 2000;
+public class UpdateProfileActivity extends AppCompatActivity {
+    String getCell;
+    EditText update_NameEt,update_divisionET,update_AddressEt,update_accouttypeET;
+    private ProgressDialog loading;
+    Button updateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_update_profile);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Registration");
+        getSupportActionBar().setTitle("Update Profile");
+        getSupportActionBar().setHomeButtonEnabled(true); //for back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
 
-        changeStatusBarColor();
-        accouttypeET =findViewById(R.id.editTextAccountType);
-        divisionET =findViewById(R.id.editTextDivName);
-        nameET=findViewById(R.id.editTextName);
-        cellET=findViewById(R.id.editTextMobile);
-        addressEt=findViewById(R.id.editTextAddress);
-        passwordET=findViewById(R.id.editTextPassword);
-        registerBtn=findViewById(R.id.cirRegisterButton);
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        update_NameEt=findViewById(R.id.editTextUpdateName);
+        update_divisionET=findViewById(R.id.editTextUpdateDivName);
+        update_AddressEt=findViewById(R.id.editTextUpdateAddress);
+        update_accouttypeET=findViewById(R.id.editTextUpdateAccountType);
+        updateBtn=findViewById(R.id.update_profile_button);
 
-                sign_up();
+        //Fetching cell from shared preferences
+        SharedPreferences sharedPreferences;
+        sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
 
-            }
-        });
         //For choosing account type and open alert dialog
-        accouttypeET.setOnClickListener(new View.OnClickListener() {
+        update_accouttypeET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final String[] accountList = {"Donor", "Volunteer"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfileActivity.this);
                 builder.setTitle("Choose Account Type");
                 builder.setCancelable(false);
                 builder.setItems(accountList, new DialogInterface.OnClickListener() {
@@ -77,11 +80,11 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int position) {
                         switch (position) {
                             case 0:
-                                accouttypeET.setText(accountList[position]);
+                                update_accouttypeET.setText(accountList[position]);
                                 break;
 
                             case 1:
-                                accouttypeET.setText(accountList[position]);
+                                update_accouttypeET.setText(accountList[position]);
                                 break;
                         }
                     }
@@ -102,13 +105,13 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //For choosing division and open alert dialog
-        divisionET.setOnClickListener(new View.OnClickListener() {
+        update_divisionET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final String[] divisionList = {"Dhaka", "Chittagong","Barisal","Khulna","Mymensingh","Rajshahi","Sylhet","Rangpur"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfileActivity.this);
                 builder.setTitle("Select Division");
                 builder.setCancelable(false);
                 builder.setItems(divisionList, new DialogInterface.OnClickListener() {
@@ -116,32 +119,32 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int position) {
                         switch (position) {
                             case 0:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
 
                             case 1:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
                             case 2:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
 
                             case 3:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
                             case 4:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
 
                             case 5:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
                             case 6:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
 
                             case 7:
-                                divisionET.setText(divisionList[position]);
+                                update_divisionET.setText(divisionList[position]);
                                 break;
 
                         }
@@ -163,82 +166,55 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UpdateProfile();
+            }
+        });
     }
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setStatusBarColor(getResources().getColor(R.color.register_bk_color));
-        }
-    }
-
-    public void onLoginClick(View view){
-        startActivity(new Intent(this,LoginActivity.class));
-        overridePendingTransition(R.anim.slide_in_left,android.R.anim.slide_out_right);
-        finish();
-    }
-    private void sign_up() {
-
+    public void  UpdateProfile()
+    {
         //Getting values from edit texts
-        final String name = nameET.getText().toString().trim();
-        final String cell = cellET.getText().toString().trim();
-        final String division = divisionET.getText().toString().trim();
-        final String address = addressEt.getText().toString().trim();
-        final String password = passwordET.getText().toString().trim();
-        final String account_type = accouttypeET.getText().toString().trim();
+        final String name = update_NameEt.getText().toString().trim();
+        final String division = update_divisionET.getText().toString().trim();
+        final String address = update_AddressEt.getText().toString().trim();
+        final String account_type = update_accouttypeET.getText().toString().trim();
 
 
         //Checking  field/validation
         if (name.isEmpty()) {
-            nameET.setError("Please enter name !");
-            requestFocus(nameET);
-        }
-        else if (cell.length()!=11) {
-
-            cellET.setError("Please enter valid phone number !");
-            requestFocus(cellET);
-
+            update_NameEt.setError("Please enter name !");
+            requestFocus(update_NameEt);
         }
 
         else if (division.isEmpty()) {
 
-            divisionET.setError("Please select division !");
-            requestFocus(divisionET);
+            update_divisionET.setError("Please select division !");
+            requestFocus(update_divisionET);
             Toasty.error(this, "Please select division !", Toast.LENGTH_SHORT).show();
         }
         else if (address.isEmpty()) {
 
-            addressEt.setError("Please enter full address !");
-            requestFocus(addressEt);
+            update_AddressEt.setError("Please enter full address !");
+            requestFocus(update_AddressEt);
         }
         else if (account_type.isEmpty()) {
 
-            accouttypeET.setError("Please select account type !");
-            requestFocus(accouttypeET);
+            update_accouttypeET.setError("Please select account type !");
+            requestFocus(update_accouttypeET);
             Toasty.error(this, "Please select account type !", Toast.LENGTH_SHORT).show();
         }
-        else if (password.isEmpty()) {
-
-            passwordET.setError("Please enter password !");
-            requestFocus(passwordET);
-        }
-        else if (password.length() < 4) {
-
-            passwordET.setError("Password should be more than 3 characters!");
-            requestFocus(passwordET);
-        }
-
         else
         {
             loading = new ProgressDialog(this);
             loading.setIcon(R.drawable.wait_icon);
-            loading.setTitle("Sign up");
+            loading.setTitle("Updating Profile");
             loading.setMessage("Please wait....");
             loading.show();
 
 
-            StringRequest stringRequest=new StringRequest(Request.Method.POST, Constant.SIGNUP_URL, new Response.Listener<String>() {
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, Constant.UPDATE_PROFILE_URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
@@ -247,19 +223,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                     if (response.equals("success")) {
                         loading.dismiss();
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        Toasty.success(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(UpdateProfileActivity.this, ProfileActivity.class);
+                        Toasty.success(UpdateProfileActivity.this, "Information Updated", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
-                    } else if (response.equals("exists")) {
-
-                        Toasty.warning(RegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
-                        loading.dismiss();
-
                     }
 
                     else if (response.equals("failure")) {
 
-                        Toasty.error(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
+                        Toasty.error(UpdateProfileActivity.this, "Profile update Failed!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
@@ -269,7 +240,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            Toasty.error(RegisterActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
+                            Toasty.error(UpdateProfileActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }
@@ -280,14 +251,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Map<String, String> params = new HashMap<>();
                     //Adding parameters to request
 
-                    params.put(Constant.KEY_NAME, name);
-                    params.put(Constant.KEY_CELL, cell);
-                    params.put(Constant.KEY_DIV, division);
-                    params.put(Constant.KEY_ADDRESS, address);
-                    params.put(Constant.KEY_AC_TYPE, account_type);
-                    params.put(Constant.KEY_PASSWORD, password);
+                    params.put(Constant.KEY_UPDATE_NAME, name);
+                    params.put(Constant.KEY_UPDATE_CELL, getCell);
+                    params.put(Constant.KEY_UPDATE_DIV, division);
+                    params.put(Constant.KEY_UPDATE_ADDRESS, address);
+                    params.put(Constant.KEY_UPDATE_AC_TYPE, account_type);
 
-                    Log.d("url_info",Constant.SIGNUP_URL);
+                    Log.d("url_info",Constant.UPDATE_PROFILE_URL);
 
                     //returning parameter
                     return params;
@@ -299,22 +269,23 @@ public class RegisterActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
     }
-
     //for request focus
     private void requestFocus(View view) {
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
+
+    //for back button
     @Override
-    public void onBackPressed() {
-        if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
-            super.onBackPressed();
-            finish();
-        } else {
-            Toasty.info(getBaseContext(), R.string.press_once_again_to_exit,
-                    Toast.LENGTH_SHORT).show();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; goto parent activity.
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        back_pressed = System.currentTimeMillis();
     }
 }

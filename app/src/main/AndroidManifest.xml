@@ -10,13 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.UpdateProfileActivity"></activity>
         <activity android:name=".activity.TaskActivity" />
         <activity android:name=".activity.EventDetailsActivity" />
         <activity android:name=".activity.EventsActivity" />
         <activity android:name=".activity.ReviewActivity" />
         <activity android:name=".activity.DonateMoneyActivity" />
         <activity android:name=".activity.DonateFoodActivity" />
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,10 +36,10 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     public String userDivision[]=new String[MAX_SIZE];
     public String userAddress[]=new String[MAX_SIZE];
     public String userAccounttype[]=new String[MAX_SIZE];
-
+    Button updateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        updateBtn=findViewById(R.id.update_profile_btn);
         heading_name=findViewById(R.id.headingname);
         heading_ac_type=findViewById(R.id.heading_accounttype);
         nametv=findViewById(R.id.nameTextView);
@@ -74,6 +76,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         //call function to get data
         getData("");
+
+        updateBtn=findViewById(R.id.update_profile_btn);
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ProfileActivity.this,UpdateProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -134,7 +145,6 @@ public class ProfileActivity extends AppCompatActivity {
 
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject jo = result.getJSONObject(i);
-
                     String name = jo.getString(Constant.KEY_NAME);
                     String cell = jo.getString(Constant.KEY_CELL);
                     String division = jo.getString(Constant.KEY_DIV);
@@ -184,6 +194,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.male);
                     ImageView imageView = (ImageView) findViewById(R.id.profile_image);
                     imageView.setImageBitmap(getRoundedBitmap(picture));
+
 
                 }
             }

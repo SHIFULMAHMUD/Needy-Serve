@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.UpdateProfileActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/top_layout">
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/themeColor"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            </android.support.design.widget.AppBarLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/top_layout"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                style="@style/headerText"
+                android:text="Account Information"
+                android:gravity="center"
+                android:fontFamily="@font/mo_me"
+                android:layout_marginBottom="20dp"/>
+
+            <RelativeLayout style="@style/profileDetailsLayout">
+                <ImageView
+                    android:id="@+id/nameImageView"
+                    android:src="@drawable/ic_name"
+                    style="@style/profileDetailsImage" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputName"
+                    style="@style/parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/nameImageView">
+                    <EditText
+                        android:id="@+id/editTextUpdateName"
+                        style="@style/modifiedEditText"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:hint="Name"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+
+            <RelativeLayout style="@style/profileDetailsLayout">
+                <ImageView
+                    android:id="@+id/emailImageView"
+                    android:src="@drawable/ic_address"
+                    style="@style/profileDetailsImage" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputDivName"
+                    style="@style/parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/emailImageView">
+                    <EditText
+                        android:id="@+id/editTextUpdateDivName"
+                        style="@style/modifiedEditText"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:focusable="false"
+                        android:hint="Division"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+            <RelativeLayout style="@style/profileDetailsLayout">
+                <ImageView
+                    android:id="@+id/addressImageView"
+                    android:src="@drawable/ic_address"
+                    style="@style/profileDetailsImage" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputAddress"
+                    style="@style/parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/addressImageView">
+                    <EditText
+                        android:id="@+id/editTextUpdateAddress"
+                        style="@style/modifiedEditText"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:hint="Full Address"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+            <RelativeLayout style="@style/profileDetailsLayout">
+                <ImageView
+                    android:id="@+id/dobImageView"
+                    android:src="@drawable/ic_name"
+                    style="@style/profileDetailsImage" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputAccountName"
+                    style="@style/parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/dobImageView">
+                    <EditText
+                        android:id="@+id/editTextUpdateAccountType"
+                        style="@style/modifiedEditText"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:focusable="false"
+                        android:hint="Account Type"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update Info"
+                android:id="@+id/update_profile_button"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                style="@style/loginButton" >
+            </Button>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

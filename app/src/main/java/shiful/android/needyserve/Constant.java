@@ -12,6 +12,7 @@ public class Constant {
     public static final String FOOD_DONATION_URL = MAIN_URL+"/donate_food.php";
     public static final String MONEY_DONATION_URL = MAIN_URL+"/donate_money.php";
     public static final String REVIEW_URL = MAIN_URL+"/review.php";
+    public static final String UPDATE_PROFILE_URL = MAIN_URL+"/update_profile.php";
 
     //Keys for server communications
     public static final String KEY_ID = "id";
@@ -21,6 +22,12 @@ public class Constant {
     public static final String KEY_ADDRESS = "address";
     public static final String KEY_AC_TYPE = "account_type";
     public static final String KEY_PASSWORD = "password";
+
+    public static final String KEY_UPDATE_NAME = "name";
+    public static final String KEY_UPDATE_CELL = "cell";
+    public static final String KEY_UPDATE_DIV = "division";
+    public static final String KEY_UPDATE_ADDRESS = "address";
+    public static final String KEY_UPDATE_AC_TYPE = "account_type";
 
     public static final String KEY_EVENT_NAME = "event_name";
     public static final String KEY_EVENT_DETAILS = "event_details";

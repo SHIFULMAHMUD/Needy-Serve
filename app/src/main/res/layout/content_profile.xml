@@ -123,6 +123,17 @@
             </RelativeLayout>
 
             <View style="@style/proifleDetailsView" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update Info"
+                android:id="@+id/update_profile_btn"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                style="@style/loginButton" >
+
+            </Button>
 
         </LinearLayout>
 

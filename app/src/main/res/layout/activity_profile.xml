@@ -48,6 +48,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Your Name"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:textSize="28sp"
                         />
 
@@ -57,6 +59,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Account Type"
                         android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:textStyle="bold"/>
 
                     <RelativeLayout
