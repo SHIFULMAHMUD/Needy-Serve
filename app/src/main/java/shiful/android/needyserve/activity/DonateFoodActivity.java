@@ -1,9 +1,13 @@
 package shiful.android.needyserve.activity;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,9 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +31,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,11 +40,13 @@ import shiful.android.needyserve.Constant;
 import shiful.android.needyserve.R;
 
 public class DonateFoodActivity extends AppCompatActivity {
-    EditText quantityEt,nameEt,phoneEt,addressEt;
+    EditText quantityEt,nameEt,phoneEt,addressEt, txtDate, txtTime;
     RadioGroup radioGroup;
     ProgressDialog loading;
     Button submitbtn;
-    String string_rb;
+    String string_rb, getCell;
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,11 @@ public class DonateFoodActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Needy Serve");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
+
+        //Fetching cell from shared preferences
+        SharedPreferences sharedPreferences;
+        sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
 
 
         quantityEt=findViewById(R.id.quantityEdittext);
@@ -63,6 +77,54 @@ public class DonateFoodActivity extends AppCompatActivity {
             }
         });
 
+        txtDate=(EditText)findViewById(R.id.in_date);
+        txtTime=(EditText)findViewById(R.id.in_time);
+
+        txtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+// Get Current Date
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(DonateFoodActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                    }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.show();
+            }
+        });
+        txtTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(DonateFoodActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                                txtTime.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, true);
+                timePickerDialog.show();
+            }
+
+        });
+
+
+        phoneEt.setText(getCell);
         submitbtn=findViewById(R.id.cirSubmitButton);
         quantityEt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,9 +197,11 @@ public class DonateFoodActivity extends AppCompatActivity {
 
         //Getting values from edit texts
         final String name = nameEt.getText().toString().trim();
-        final String cell = phoneEt.getText().toString().trim();
+        final String cell = getCell;
         final String quantity = quantityEt.getText().toString().trim();
         final String address = addressEt.getText().toString().trim();
+        final String date = txtDate.getText().toString().trim();
+        final String time = txtTime.getText().toString().trim();
         final String delivery = string_rb;
 
 
@@ -163,6 +227,18 @@ public class DonateFoodActivity extends AppCompatActivity {
 
             addressEt.setError("Please enter full address !");
             requestFocus(addressEt);
+        }
+        else if (date.isEmpty()) {
+
+            txtDate.setError("Please select date !");
+            requestFocus(txtDate);
+            Toasty.error(this, "Please select date !", Toast.LENGTH_SHORT).show();
+        }
+        else if (time.isEmpty()) {
+
+            txtTime.setError("Please select time !");
+            requestFocus(txtTime);
+            Toasty.error(this, "Please select time !", Toast.LENGTH_SHORT).show();
         }
 
         else
@@ -196,7 +272,6 @@ public class DonateFoodActivity extends AppCompatActivity {
                                 //Starting profile activity
 
                                 Toasty.success(DonateFoodActivity.this, " Successfully Submitted!", Toast.LENGTH_SHORT).show();
-
 
                             }
 
@@ -240,6 +315,8 @@ public class DonateFoodActivity extends AppCompatActivity {
                     params.put(Constant.KEY_DONOR_MOBILE, cell);
                     params.put(Constant.KEY_QUANTITY, quantity);
                     params.put(Constant.KEY_DONOR_ADDRESS, address);
+                    params.put(Constant.KEY_DATE, date);
+                    params.put(Constant.KEY_TIME, time);
                     params.put(Constant.KEY_DELIVERY, delivery);
 
                     Log.d("url_info",Constant.FOOD_DONATION_URL);

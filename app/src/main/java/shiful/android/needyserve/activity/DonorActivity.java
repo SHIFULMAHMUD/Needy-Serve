@@ -10,7 +10,7 @@ import es.dmoral.toasty.Toasty;
 import shiful.android.needyserve.R;
 
 public class DonorActivity extends AppCompatActivity {
-    CardView profilecv,fooddonatecv,donate_moneycv,reviewcv,logoutcv,eventscv;
+    CardView profilecv,fooddonatecv,donate_moneycv,reviewcv,logoutcv,eventscv,fooddonatehistorycv,moneydonatehistorycv;
     private static long back_pressed;
     private static final int TIME_DELAY = 2000;
 
@@ -25,6 +25,22 @@ public class DonorActivity extends AppCompatActivity {
         reviewcv=findViewById(R.id.review_cv);
         logoutcv=findViewById(R.id.logout_cv);
         eventscv=findViewById(R.id.events_cv);
+        fooddonatehistorycv=findViewById(R.id.food_donate_history_cv);
+        moneydonatehistorycv=findViewById(R.id.Money_donate_history_cv);
+        fooddonatehistorycv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DonorActivity.this,FoodDonateHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        moneydonatehistorycv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DonorActivity.this,MoneyDonateHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
         eventscv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

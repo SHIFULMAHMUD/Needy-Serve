@@ -1,6 +1,10 @@
 package shiful.android.needyserve.activity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,9 +35,11 @@ import shiful.android.needyserve.Constant;
 import shiful.android.needyserve.R;
 
 public class DonateMoneyActivity extends AppCompatActivity {
-    EditText donor_name_Et,mobile_Et,address_Et,amount_Et,trx_id_Et,comment_Et;
+    EditText donor_name_Et,mobile_Et,address_Et,amount_Et,trx_id_Et,comment_Et,txtDate, txtTime;
     Button submit_button;
     ProgressDialog loading;
+    String getCell;
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,11 @@ public class DonateMoneyActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
 
+        //Fetching cell from shared preferences
+        SharedPreferences sharedPreferences;
+        sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
+
         donor_name_Et=findViewById(R.id.donor_nameEdittext);
         mobile_Et=findViewById(R.id.mobile_noEdittext);
         address_Et=findViewById(R.id.full_addressEdittext);
@@ -49,6 +63,54 @@ public class DonateMoneyActivity extends AppCompatActivity {
         trx_id_Et=findViewById(R.id.trx_id_Edittext);
         comment_Et=findViewById(R.id.commentEdittext);
         submit_button=findViewById(R.id.cirSubmitBtn);
+        mobile_Et.setText(getCell);
+        txtDate=(EditText)findViewById(R.id.in_date_et);
+        txtTime=(EditText)findViewById(R.id.in_time_et);
+
+        txtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+// Get Current Date
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(DonateMoneyActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                    }
+                }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.show();
+            }
+        });
+        txtTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(DonateMoneyActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                                txtTime.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, true);
+                timePickerDialog.show();
+            }
+
+        });
+
+
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,10 +122,12 @@ public class DonateMoneyActivity extends AppCompatActivity {
 
         //Getting values from edit texts
         final String name = donor_name_Et.getText().toString().trim();
-        final String cell = mobile_Et.getText().toString().trim();
+        final String cell = getCell;
         final String address = address_Et.getText().toString().trim();
         final String amount = amount_Et.getText().toString().trim();
         final String trx_id = trx_id_Et.getText().toString().trim();
+        final String date = txtDate.getText().toString().trim();
+        final String time = txtTime.getText().toString().trim();
         final String comment = comment_Et.getText().toString().trim();
 
 
@@ -94,6 +158,18 @@ public class DonateMoneyActivity extends AppCompatActivity {
             trx_id_Et.setError("Please enter bKash transaction id !");
             requestFocus(trx_id_Et);
         }
+        else if (date.isEmpty()) {
+
+            txtDate.setError("Please select date !");
+            requestFocus(txtDate);
+            Toasty.error(this, "Please select date !", Toast.LENGTH_SHORT).show();
+        }
+        else if (time.isEmpty()) {
+
+            txtTime.setError("Please select time !");
+            requestFocus(txtTime);
+            Toasty.error(this, "Please select time !", Toast.LENGTH_SHORT).show();
+        }
 
         else
         {
@@ -103,9 +179,7 @@ public class DonateMoneyActivity extends AppCompatActivity {
             loading.setMessage("Please wait....");
             loading.show();
 
-
             String URL = Constant.MONEY_DONATION_URL;
-
 
             //Creating a string request
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -171,6 +245,8 @@ public class DonateMoneyActivity extends AppCompatActivity {
                     params.put(Constant.KEY_MONEY_DONOR_ADDRESS, address);
                     params.put(Constant.KEY_AMOUNT, amount);
                     params.put(Constant.KEY_TRX_ID, trx_id);
+                    params.put(Constant.KEY_MD_DATE, date);
+                    params.put(Constant.KEY_MD_TIME, time);
                     params.put(Constant.KEY_COMMENT, comment);
 
                     Log.d("url_info",Constant.MONEY_DONATION_URL);

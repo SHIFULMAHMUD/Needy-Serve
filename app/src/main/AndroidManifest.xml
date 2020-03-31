@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.UpdateProfileActivity"></activity>
+        <activity android:name=".activity.MoneyDonateHistoryActivity"></activity>
+        <activity android:name=".activity.FoodDonateHistoryActivity" />
+        <activity android:name=".activity.UpdateProfileActivity" />
         <activity android:name=".activity.TaskActivity" />
         <activity android:name=".activity.EventDetailsActivity" />
         <activity android:name=".activity.EventsActivity" />
@@ -36,10 +38,10 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
