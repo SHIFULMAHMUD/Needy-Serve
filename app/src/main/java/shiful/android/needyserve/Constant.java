@@ -15,6 +15,8 @@ public class Constant {
     public static final String UPDATE_PROFILE_URL = MAIN_URL+"/update_profile.php";
     public static final String VIEW_FOOD_DONATION_URL = MAIN_URL+"/view_food_donation_history.php?cell=";
     public static final String VIEW_MONEY_DONATION_URL = MAIN_URL+"/view_money_donation_history.php?cell=";
+    public static final String VIEW_ALL_REVIEWS_URL = MAIN_URL+"/view_reviews.php";
+    public static final String UPDATE_REVIEW_URL = MAIN_URL+"/update_review.php";
 
 
     //Keys for server communications
@@ -75,9 +77,22 @@ public class Constant {
 
     public static final String KEY_TASK = "volunteer_task";
 
+    public static final String KEY_USERNAME = "name";
+    public static final String KEY_USERCELL = "cell";
     public static final String KEY_RATING = "rating";
     public static final String KEY_RECOMMEND = "recommend";
     public static final String KEY_REVIEW = "review";
+
+    public static final String KEY_VIEW_USERNAME = "name";
+    public static final String KEY_VIEW_RATING = "rating";
+    public static final String KEY_VIEW_RECOMMEND = "recommend_us";
+    public static final String KEY_VIEW_REVIEW = "review";
+
+    public static final String KEY_UPDATE_USERNAME = "name";
+    public static final String KEY__UPDATE_USERCELL = "cell";
+    public static final String KEY_UPDATE_RATING = "rating";
+    public static final String KEY_UPDATE_RECOMMEND = "recommend_us";
+    public static final String KEY_UPDATE_REVIEW = "review";
     //share preference
     //We will use this to store the user cell number into shared preference
     public static final String SHARED_PREF_NAME = "shiful.android.needyserve"; //pcakage name+ id

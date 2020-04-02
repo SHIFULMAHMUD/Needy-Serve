@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity.UpdateReviewActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_layout">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/themeColor"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_layout">
+
+        <LinearLayout
+            android:id="@+id/top_image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@drawable/reviewus"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Your Review"
+            android:layout_below="@+id/top_image"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:id="@+id/heading_text"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputName"
+            style="@style/parent"
+            android:layout_below="@+id/heading_text"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Service Provider"
+                style="@style/modifiedEditText"
+                android:layout_margin="20dp"
+                android:inputType="text"
+                android:focusable="false"
+                android:text="Needy Serve"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/mo_me"
+                android:id="@+id/service_provider_name"
+                android:textSize="16sp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textInputName"
+            android:layout_margin="20dp"
+            android:text="Rate your experience with us :"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/mo_me"
+            android:id="@+id/mobile_noEdittext"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/update_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/mobile_noEdittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Would you recommend this provider?"
+            android:id="@+id/text"
+            android:fontFamily="@font/mo_me"
+            android:textSize="16sp"
+            android:layout_margin="20dp"
+            android:layout_below="@+id/update_ratingBar"
+            android:textColor="@android:color/black"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:id="@+id/update_radiogroup"
+            android:layout_below="@+id/text">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mo_me"
+                android:textSize="16sp"
+                android:text="Yes">
+            </RadioButton>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/mo_me"
+                android:textSize="16sp"
+                android:text="No">
+            </RadioButton>
+        </RadioGroup>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputUserName"
+            style="@style/parent"
+            android:layout_below="@+id/update_radiogroup"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/modifiedEditText"
+                android:hint="Your Name"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/mo_me"
+                android:maxLines="1"
+                android:id="@+id/update_username_Edittext"
+                android:textSize="16sp"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputReview"
+            style="@style/parent"
+            android:layout_below="@+id/textInputUserName"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/modifiedEditText"
+                android:hint="Your Review"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/mo_me"
+                android:maxLines="1"
+                android:id="@+id/update_review_Edittext"
+                android:textSize="16sp"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+            android:id="@+id/cirUpdate_Review_Button"
+            style="@style/loginButton"
+            android:layout_below="@+id/textInputReview"
+            app:spinning_bar_width="4dp"
+            app:spinning_bar_color="#FFF"
+            android:text="Submit Review"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/loginViewsMargin"
+            android:layout_marginBottom="30dp"
+            app:spinning_bar_padding="6dp"
+            app:initialCornerAngle="27dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>
+
+</ScrollView>

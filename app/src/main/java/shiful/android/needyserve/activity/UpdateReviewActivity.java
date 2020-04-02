@@ -4,9 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.LayerDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +16,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,48 +33,33 @@ import es.dmoral.toasty.Toasty;
 import shiful.android.needyserve.Constant;
 import shiful.android.needyserve.R;
 
-public class ReviewActivity extends AppCompatActivity {
+public class UpdateReviewActivity extends AppCompatActivity {
     RatingBar ratingbar;
     Button reviewBtn;
     RadioGroup radioGroup;
     ProgressDialog loading;
     EditText name_Et,review_Et;
     String string_rb,string_rating,getCell;
-    TextView viewReviewTv,updateReviewTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review);
+        setContentView(R.layout.activity_update_review);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Needy Serve");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
-        viewReviewTv=findViewById(R.id.view_review_tv);
-        updateReviewTv=findViewById(R.id.update_review_tv);
-        updateReviewTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ReviewActivity.this,UpdateReviewActivity.class);
-                startActivity(intent);
-            }
-        });
-        viewReviewTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ReviewActivity.this,ViewAllReviewActivity.class);
-                startActivity(intent);
-            }
-        });
+
         //Fetching cell from shared preferences
         SharedPreferences sharedPreferences;
         sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
-        name_Et=findViewById(R.id.username_Edittext);
-        review_Et=findViewById(R.id.review_Edittext);
+
+        name_Et=findViewById(R.id.update_username_Edittext);
+        review_Et=findViewById(R.id.update_review_Edittext);
         //binding MainActivity.java with activity_main.xml file
-        ratingbar = findViewById(R.id.ratingBar);
+        ratingbar = findViewById(R.id.update_ratingBar);
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
             @Override
@@ -88,8 +69,8 @@ public class ReviewActivity extends AppCompatActivity {
         });
 
 
-        reviewBtn=findViewById(R.id.cirSubmit_Review_Button);
-        radioGroup=findViewById(R.id.radiogroup);
+        reviewBtn=findViewById(R.id.cirUpdate_Review_Button);
+        radioGroup=findViewById(R.id.update_radiogroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -108,7 +89,7 @@ public class ReviewActivity extends AppCompatActivity {
 
         //Getting values from edit texts
         final String name = name_Et.getText().toString().trim();
-        final String cell=getCell;
+        final String cell = getCell;
         final String rating = string_rating;
         final String recommend = string_rb;
         final String review = review_Et.getText().toString().trim();
@@ -133,7 +114,7 @@ public class ReviewActivity extends AppCompatActivity {
             loading.show();
 
 
-            String URL = Constant.REVIEW_URL;
+            String URL = Constant.UPDATE_REVIEW_URL;
 
 
             //Creating a string request
@@ -154,7 +135,7 @@ public class ReviewActivity extends AppCompatActivity {
                                 loading.dismiss();
                                 //Starting profile activity
 
-                                Toasty.success(ReviewActivity.this, " Review Submitted!", Toast.LENGTH_SHORT).show();
+                                Toasty.success(UpdateReviewActivity.this, " Review Updated!", Toast.LENGTH_SHORT).show();
 
 
                             }
@@ -167,13 +148,13 @@ public class ReviewActivity extends AppCompatActivity {
                                 //Starting profile activity
 
                                 //Intent intent = new Intent(AddContactsActivity.this, HomeActivity.class);
-                                Toasty.error(ReviewActivity.this, " Submission Failed!", Toast.LENGTH_SHORT).show();
+                                Toasty.error(UpdateReviewActivity.this, " Submission Failed!", Toast.LENGTH_SHORT).show();
                                 //startActivity(intent);
 
                             } else {
 
                                 loading.dismiss();
-                                Toasty.error(ReviewActivity.this, "Network Error", Toast.LENGTH_SHORT).show();
+                                Toasty.error(UpdateReviewActivity.this, "Network Error", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -185,7 +166,7 @@ public class ReviewActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             //You can handle error here if you want
 
-                            Toasty.error(ReviewActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
+                            Toasty.error(UpdateReviewActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }) {
@@ -194,13 +175,13 @@ public class ReviewActivity extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     //Adding parameters to request
-                    params.put(Constant.KEY_USERNAME, name);
-                    params.put(Constant.KEY_USERCELL, cell);
-                    params.put(Constant.KEY_RATING, rating);
-                    params.put(Constant.KEY_RECOMMEND, recommend);
-                    params.put(Constant.KEY_REVIEW, review);
+                    params.put(Constant.KEY_UPDATE_USERNAME, name);
+                    params.put(Constant.KEY__UPDATE_USERCELL, cell);
+                    params.put(Constant.KEY_UPDATE_RATING, rating);
+                    params.put(Constant.KEY_UPDATE_RECOMMEND, recommend);
+                    params.put(Constant.KEY_UPDATE_REVIEW, review);
 
-                    Log.d("url_info",Constant.REVIEW_URL);
+                    Log.d("url_info",Constant.UPDATE_REVIEW_URL);
 
                     //returning parameter
                     return params;

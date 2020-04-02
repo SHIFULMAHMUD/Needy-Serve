@@ -30,12 +30,13 @@ tools:context=".activity.ReviewActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar_layout">
+
             <LinearLayout
                 android:id="@+id/top_image"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:orientation="horizontal"
-                android:background="@drawable/help">
+                android:layout_height="220dp"
+                android:background="@drawable/help"
+                android:orientation="horizontal">
             </LinearLayout>
 
             <TextView
@@ -124,9 +125,27 @@ tools:context=".activity.ReviewActivity">
                 </RadioButton>
             </RadioGroup>
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputAddress"
+                android:id="@+id/textInputUserName"
                 style="@style/parent"
                 android:layout_below="@+id/radiogroup"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/modifiedEditText"
+                    android:hint="Your Name"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/mo_me"
+                    android:maxLines="1"
+                    android:id="@+id/username_Edittext"
+                    android:textSize="16sp"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputReview"
+                style="@style/parent"
+                android:layout_below="@+id/textInputUserName"
                 android:layout_marginTop="@dimen/loginViewsMargin">
                 <EditText
                     android:layout_width="match_parent"
@@ -146,7 +165,7 @@ tools:context=".activity.ReviewActivity">
             <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                 android:id="@+id/cirSubmit_Review_Button"
                 style="@style/loginButton"
-                android:layout_below="@+id/textInputAddress"
+                android:layout_below="@+id/textInputReview"
                 app:spinning_bar_width="4dp"
                 app:spinning_bar_color="#FFF"
                 android:text="Submit Review"
@@ -156,6 +175,31 @@ tools:context=".activity.ReviewActivity">
                 android:layout_marginBottom="30dp"
                 app:spinning_bar_padding="6dp"
                 app:initialCornerAngle="27dp"/>
+            <TextView
+                style="@style/parent"
+                android:textStyle="bold"
+                android:textColor="@color/themeColor"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/update_review_tv"
+                android:layout_below="@+id/cirSubmit_Review_Button"
+                android:text="Update Review?"
+                android:fontFamily="@font/mo_me"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                />
+            <TextView
+                style="@style/parent"
+                android:textStyle="bold"
+                android:textColor="@color/themeColor"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/mo_me"
+                android:layout_marginBottom="30dp"
+                android:id="@+id/view_review_tv"
+                android:layout_below="@+id/update_review_tv"
+                android:text="View All Reviews?"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                />
         </RelativeLayout>
     </RelativeLayout>
 
