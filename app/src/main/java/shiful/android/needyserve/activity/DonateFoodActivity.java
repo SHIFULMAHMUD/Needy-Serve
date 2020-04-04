@@ -42,6 +42,7 @@ import shiful.android.needyserve.R;
 public class DonateFoodActivity extends AppCompatActivity {
     EditText quantityEt,nameEt,phoneEt,addressEt, txtDate, txtTime;
     RadioGroup radioGroup;
+    RadioButton radioButtonOne;
     ProgressDialog loading;
     Button submitbtn;
     String string_rb, getCell;
@@ -68,6 +69,9 @@ public class DonateFoodActivity extends AppCompatActivity {
         nameEt=findViewById(R.id.nameEdittext);
         phoneEt=findViewById(R.id.mobileEdittext);
         addressEt=findViewById(R.id.addressEdittext);
+        radioButtonOne=findViewById(R.id.rb1);
+        radioButtonOne.setChecked(true);
+        string_rb = radioButtonOne.getText().toString().trim();
         radioGroup=findViewById(R.id.radiogroup_food);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -272,6 +276,8 @@ public class DonateFoodActivity extends AppCompatActivity {
                                 //Starting profile activity
 
                                 Toasty.success(DonateFoodActivity.this, " Successfully Submitted!", Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(DonateFoodActivity.this,FoodDonateHistoryActivity.class);
+                                startActivity(intent);
 
                             }
 

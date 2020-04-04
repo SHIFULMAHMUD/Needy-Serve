@@ -37,6 +37,7 @@ public class UpdateReviewActivity extends AppCompatActivity {
     RatingBar ratingbar;
     Button reviewBtn;
     RadioGroup radioGroup;
+    RadioButton radioButton1;
     ProgressDialog loading;
     EditText name_Et,review_Et;
     String string_rb,string_rating,getCell;
@@ -70,6 +71,10 @@ public class UpdateReviewActivity extends AppCompatActivity {
 
 
         reviewBtn=findViewById(R.id.cirUpdate_Review_Button);
+        radioButton1=findViewById(R.id.rb_update);
+        radioButton1.setChecked(true);
+        string_rb = radioButton1.getText().toString().trim();
+
         radioGroup=findViewById(R.id.update_radiogroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -136,7 +141,8 @@ public class UpdateReviewActivity extends AppCompatActivity {
                                 //Starting profile activity
 
                                 Toasty.success(UpdateReviewActivity.this, " Review Updated!", Toast.LENGTH_SHORT).show();
-
+                                Intent intent=new Intent(UpdateReviewActivity.this,ViewAllReviewActivity.class);
+                                startActivity(intent);
 
                             }
 

@@ -118,29 +118,7 @@
             </RelativeLayout>
 
             <View style="@style/proifleDetailsView" />
-            <RelativeLayout style="@style/profileDetailsLayout">
-                <ImageView
-                    android:id="@+id/dobImageView"
-                    android:src="@drawable/ic_name"
-                    style="@style/profileDetailsImage" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/textInputAccountName"
-                    style="@style/parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/dobImageView">
-                    <EditText
-                        android:id="@+id/editTextUpdateAccountType"
-                        style="@style/modifiedEditText"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:focusable="false"
-                        android:hint="Account Type"/>
-                </android.support.design.widget.TextInputLayout>
-
-            </RelativeLayout>
-
-            <View style="@style/proifleDetailsView" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -148,7 +126,7 @@
                 android:id="@+id/update_profile_button"
                 android:textAllCaps="false"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 style="@style/loginButton" >
             </Button>
 

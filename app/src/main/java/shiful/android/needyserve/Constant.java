@@ -11,7 +11,7 @@ public class Constant {
     public static final String TASK_URL = MAIN_URL+"/task.php?";
     public static final String FOOD_DONATION_URL = MAIN_URL+"/donate_food.php";
     public static final String MONEY_DONATION_URL = MAIN_URL+"/donate_money.php";
-    public static final String REVIEW_URL = MAIN_URL+"/review.php";
+    public static final String REVIEW_URL = MAIN_URL+"/review.php?cell=";
     public static final String UPDATE_PROFILE_URL = MAIN_URL+"/update_profile.php";
     public static final String VIEW_FOOD_DONATION_URL = MAIN_URL+"/view_food_donation_history.php?cell=";
     public static final String VIEW_MONEY_DONATION_URL = MAIN_URL+"/view_money_donation_history.php?cell=";

@@ -39,8 +39,8 @@ import shiful.android.needyserve.Constant;
 import shiful.android.needyserve.R;
 
 public class UpdateProfileActivity extends AppCompatActivity {
-    String getCell;
-    EditText update_NameEt,update_divisionET,update_AddressEt,update_accouttypeET;
+    String getCell,getName,getDivision,getAddress;
+    EditText update_NameEt,update_divisionET,update_AddressEt;
     private ProgressDialog loading;
     Button updateBtn;
 
@@ -54,55 +54,22 @@ public class UpdateProfileActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
 
+        getName = getIntent().getExtras().getString("name");
+        getDivision = getIntent().getExtras().getString("division");
+        getAddress = getIntent().getExtras().getString("address");
+
         update_NameEt=findViewById(R.id.editTextUpdateName);
         update_divisionET=findViewById(R.id.editTextUpdateDivName);
         update_AddressEt=findViewById(R.id.editTextUpdateAddress);
-        update_accouttypeET=findViewById(R.id.editTextUpdateAccountType);
         updateBtn=findViewById(R.id.update_profile_button);
 
+        update_NameEt.setText(getName);
+        update_divisionET.setText(getDivision);
+        update_AddressEt.setText(getAddress);
         //Fetching cell from shared preferences
         SharedPreferences sharedPreferences;
         sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
-
-        //For choosing account type and open alert dialog
-        update_accouttypeET.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final String[] accountList = {"Donor", "Volunteer"};
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfileActivity.this);
-                builder.setTitle("Choose Account Type");
-                builder.setCancelable(false);
-                builder.setItems(accountList, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        switch (position) {
-                            case 0:
-                                update_accouttypeET.setText(accountList[position]);
-                                break;
-
-                            case 1:
-                                update_accouttypeET.setText(accountList[position]);
-                                break;
-                        }
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog accountTypeDialog = builder.create();
-
-                accountTypeDialog.show();
-            }
-
-        });
 
         //For choosing division and open alert dialog
         update_divisionET.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +146,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         final String name = update_NameEt.getText().toString().trim();
         final String division = update_divisionET.getText().toString().trim();
         final String address = update_AddressEt.getText().toString().trim();
-        final String account_type = update_accouttypeET.getText().toString().trim();
 
 
         //Checking  field/validation
@@ -198,12 +164,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
             update_AddressEt.setError("Please enter full address !");
             requestFocus(update_AddressEt);
-        }
-        else if (account_type.isEmpty()) {
-
-            update_accouttypeET.setError("Please select account type !");
-            requestFocus(update_accouttypeET);
-            Toasty.error(this, "Please select account type !", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -255,7 +215,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     params.put(Constant.KEY_UPDATE_CELL, getCell);
                     params.put(Constant.KEY_UPDATE_DIV, division);
                     params.put(Constant.KEY_UPDATE_ADDRESS, address);
-                    params.put(Constant.KEY_UPDATE_AC_TYPE, account_type);
 
                     Log.d("url_info",Constant.UPDATE_PROFILE_URL);
 

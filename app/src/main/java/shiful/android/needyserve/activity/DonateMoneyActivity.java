@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -200,7 +201,8 @@ public class DonateMoneyActivity extends AppCompatActivity {
                                 //Starting profile activity
 
                                 Toasty.success(DonateMoneyActivity.this, " Successfully Submitted!", Toast.LENGTH_SHORT).show();
-
+                                Intent intent=new Intent(DonateMoneyActivity.this,MoneyDonateHistoryActivity.class);
+                                startActivity(intent);
 
                             }
 

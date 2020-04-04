@@ -76,15 +76,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         //call function to get data
         getData("");
-
-        updateBtn=findViewById(R.id.update_profile_btn);
-        updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ProfileActivity.this,UpdateProfileActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
@@ -145,10 +136,10 @@ public class ProfileActivity extends AppCompatActivity {
 
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject jo = result.getJSONObject(i);
-                    String name = jo.getString(Constant.KEY_NAME);
-                    String cell = jo.getString(Constant.KEY_CELL);
-                    String division = jo.getString(Constant.KEY_DIV);
-                    String address = jo.getString(Constant.KEY_ADDRESS);
+                    final String name = jo.getString(Constant.KEY_NAME);
+                    final String cell = jo.getString(Constant.KEY_CELL);
+                    final String division = jo.getString(Constant.KEY_DIV);
+                    final String address = jo.getString(Constant.KEY_ADDRESS);
                     String account_type = jo.getString(Constant.KEY_AC_TYPE);
 
                     //insert data into array for put extra
@@ -195,7 +186,17 @@ public class ProfileActivity extends AppCompatActivity {
                     ImageView imageView = (ImageView) findViewById(R.id.profile_image);
                     imageView.setImageBitmap(getRoundedBitmap(picture));
 
-
+                    updateBtn=findViewById(R.id.update_profile_btn);
+                    updateBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent=new Intent(ProfileActivity.this,UpdateProfileActivity.class);
+                            intent.putExtra("name",name);
+                            intent.putExtra("division",division);
+                            intent.putExtra("address",address);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         } catch (JSONException e) {

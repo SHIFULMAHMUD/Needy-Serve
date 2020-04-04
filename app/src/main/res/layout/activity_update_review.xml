@@ -113,6 +113,7 @@ tools:context=".activity.UpdateReviewActivity">
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/mo_me"
                 android:textSize="16sp"
+                android:id="@+id/rb_update"
                 android:text="Yes">
             </RadioButton>
             <RadioButton

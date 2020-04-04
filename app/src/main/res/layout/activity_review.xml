@@ -112,6 +112,7 @@ tools:context=".activity.ReviewActivity">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mo_me"
+                    android:id="@+id/rb"
                     android:textSize="16sp"
                     android:text="Yes">
                 </RadioButton>
