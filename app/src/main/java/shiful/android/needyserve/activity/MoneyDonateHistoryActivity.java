@@ -43,6 +43,7 @@ public class MoneyDonateHistoryActivity extends AppCompatActivity {
     public String deliveryDate[]=new String[MAX_SIZE];
     public String deliveryTime[]=new String[MAX_SIZE];
     public String donorComment[]=new String[MAX_SIZE];
+    public String donationConfirmation[]=new String[MAX_SIZE];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +129,7 @@ public class MoneyDonateHistoryActivity extends AppCompatActivity {
                     String donation_date = jo.getString(Constant.KEY_VIEW_MD_DATE);
                     String donation_time = jo.getString(Constant.KEY_VIEW_MD_TIME);
                     String comment = jo.getString(Constant.KEY_VIEW_COMMENT);
+                    String confirmation = jo.getString(Constant.KEY_MONEY_DONATION_CONFIRMATION);
 
                     //insert data into array for put extra
                     donorName[i] = donor_name;
@@ -138,6 +140,7 @@ public class MoneyDonateHistoryActivity extends AppCompatActivity {
                     deliveryDate[i] = donation_date;
                     deliveryTime[i] = donation_time;
                     donorComment[i] = comment;
+                    donationConfirmation[i] = confirmation;
 
                     //put value into Hashmap
                     HashMap<String, String> money_donation_data = new HashMap<>();
@@ -149,6 +152,7 @@ public class MoneyDonateHistoryActivity extends AppCompatActivity {
                     money_donation_data.put(Constant.KEY_VIEW_MD_DATE, donation_date);
                     money_donation_data.put(Constant.KEY_VIEW_MD_TIME, donation_time);
                     money_donation_data.put(Constant.KEY_VIEW_COMMENT, comment);
+                    money_donation_data.put(Constant.KEY_MONEY_DONATION_CONFIRMATION, confirmation);
 
                     list.add(money_donation_data);
                 }
@@ -159,8 +163,8 @@ public class MoneyDonateHistoryActivity extends AppCompatActivity {
 
         ListAdapter adapter = new SimpleAdapter(
                 MoneyDonateHistoryActivity.this, list, R.layout.moneydonationhistory_items,
-                new String[]{Constant.KEY_VIEW_AMOUNT, Constant.KEY_VIEW_TRX_ID, Constant.KEY_VIEW_MD_DATE,Constant.KEY_VIEW_MD_TIME,Constant.KEY_VIEW_COMMENT},
-                new int[]{R.id.donation_amount_tv, R.id.trx_id_tv, R.id.user_delivery_date_tv, R.id.user_delivery_time_tv, R.id.comment_tv});
+                new String[]{Constant.KEY_VIEW_AMOUNT, Constant.KEY_VIEW_TRX_ID, Constant.KEY_VIEW_MD_DATE,Constant.KEY_VIEW_MD_TIME,Constant.KEY_VIEW_COMMENT,Constant.KEY_MONEY_DONATION_CONFIRMATION},
+                new int[]{R.id.donation_amount_tv, R.id.trx_id_tv, R.id.user_delivery_date_tv, R.id.user_delivery_time_tv, R.id.comment_tv,R.id.money_confirmation_tv});
         CustomList.setAdapter(adapter);
     }
 

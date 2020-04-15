@@ -49,6 +49,7 @@ public class Constant {
     public static final String KEY_DATE = "date";
     public static final String KEY_TIME = "time";
     public static final String KEY_DELIVERY = "delivery_option";
+    public static final String KEY_STATUS_FOOD_DONATE = "status";
 
     public static final String KEY_FOOD_DONOR_NAME = "name";
     public static final String KEY_FOOD_DONOR_MOBILE = "cell";
@@ -57,6 +58,7 @@ public class Constant {
     public static final String KEY_DONATION_DATE = "date";
     public static final String KEY_DONATION_TIME = "time";
     public static final String KEY_DELIVERY_OPTION = "delivery_option";
+    public static final String KEY_FOOD_DONATION_CONFIRMATION = "confirm";
 
     public static final String KEY_MONEY_DONOR_NAME = "name";
     public static final String KEY_DONOR_CELL = "cell";
@@ -66,6 +68,7 @@ public class Constant {
     public static final String KEY_MD_DATE = "date";
     public static final String KEY_MD_TIME = "time";
     public static final String KEY_COMMENT = "comment";
+    public static final String KEY_STATUS_MONEY_DONATE = "status";
 
     public static final String KEY_VIEW_MONEY_DONOR_NAME = "name";
     public static final String KEY_VIEW_DONOR_CELL = "cell";
@@ -75,6 +78,7 @@ public class Constant {
     public static final String KEY_VIEW_MD_DATE = "date";
     public static final String KEY_VIEW_MD_TIME = "time";
     public static final String KEY_VIEW_COMMENT = "comment";
+    public static final String KEY_MONEY_DONATION_CONFIRMATION = "confirmation";
 
     public static final String KEY_TASK = "volunteer_task";
 

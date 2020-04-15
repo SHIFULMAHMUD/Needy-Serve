@@ -207,6 +207,7 @@ public class DonateFoodActivity extends AppCompatActivity {
         final String date = txtDate.getText().toString().trim();
         final String time = txtTime.getText().toString().trim();
         final String delivery = string_rb;
+        final String status="Pending";
 
 
         //Checking  field/validation
@@ -324,6 +325,7 @@ public class DonateFoodActivity extends AppCompatActivity {
                     params.put(Constant.KEY_DATE, date);
                     params.put(Constant.KEY_TIME, time);
                     params.put(Constant.KEY_DELIVERY, delivery);
+                    params.put(Constant.KEY_STATUS_FOOD_DONATE, status);
 
                     Log.d("url_info",Constant.FOOD_DONATION_URL);
 

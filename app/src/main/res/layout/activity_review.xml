@@ -176,14 +176,46 @@ tools:context=".activity.ReviewActivity">
                 android:layout_marginBottom="30dp"
                 app:spinning_bar_padding="6dp"
                 app:initialCornerAngle="27dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="12"
+                android:gravity="center"
+                android:id="@+id/moreoptionsId"
+                android:layout_below="@+id/cirSubmit_Review_Button"
+                android:layout_marginTop="30dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    style="@style/viewParent.headerText.NoMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More Options"
+                    android:layout_weight="6"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_weight="3"/>
+
+            </LinearLayout>
+
             <TextView
                 style="@style/parent"
                 android:textStyle="bold"
                 android:textColor="@color/themeColor"
                 android:textSize="17sp"
-                android:layout_marginLeft="20dp"
+                android:gravity="center"
                 android:id="@+id/update_review_tv"
-                android:layout_below="@+id/cirSubmit_Review_Button"
+                android:layout_below="@+id/moreoptionsId"
                 android:text="Update Review?"
                 android:fontFamily="@font/mo_me"
                 android:layout_marginTop="@dimen/loginViewsMargin"
@@ -193,7 +225,7 @@ tools:context=".activity.ReviewActivity">
                 android:textStyle="bold"
                 android:textColor="@color/themeColor"
                 android:textSize="17sp"
-                android:layout_marginLeft="20dp"
+                android:gravity="center"
                 android:fontFamily="@font/mo_me"
                 android:layout_marginBottom="30dp"
                 android:id="@+id/view_review_tv"

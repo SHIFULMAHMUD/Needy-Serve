@@ -44,7 +44,7 @@ tools:context=".activity.EventsActivity">
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Search Event Name. . ."
+                    android:hint="Search Event . . ."
                     android:textColor="@color/colorPrimaryDark"
                     android:inputType="textPersonName" />
 

@@ -47,6 +47,7 @@ public class FoodDonateHistoryActivity extends AppCompatActivity {
     public String deliveryDate[]=new String[MAX_SIZE];
     public String deliveryTime[]=new String[MAX_SIZE];
     public String deliveryOption[]=new String[MAX_SIZE];
+    public String donationConfirmation[]=new String[MAX_SIZE];
 
 
     @Override
@@ -132,6 +133,7 @@ public class FoodDonateHistoryActivity extends AppCompatActivity {
                     String donation_date = jo.getString(Constant.KEY_DONATION_DATE);
                     String donation_time = jo.getString(Constant.KEY_DONATION_TIME);
                     String delivery = jo.getString(Constant.KEY_DELIVERY_OPTION);
+                    String confirmation = jo.getString(Constant.KEY_FOOD_DONATION_CONFIRMATION);
 
                     //insert data into array for put extra
                     donorName[i] = donor_name;
@@ -141,6 +143,7 @@ public class FoodDonateHistoryActivity extends AppCompatActivity {
                     deliveryDate[i] = donation_date;
                     deliveryTime[i] = donation_time;
                     deliveryOption[i] = delivery;
+                    donationConfirmation[i]=confirmation;
 
                     //put value into Hashmap
                     HashMap<String, String> food_donation_data = new HashMap<>();
@@ -151,6 +154,7 @@ public class FoodDonateHistoryActivity extends AppCompatActivity {
                     food_donation_data.put(Constant.KEY_DONATION_DATE, donation_date);
                     food_donation_data.put(Constant.KEY_DONATION_TIME, donation_time);
                     food_donation_data.put(Constant.KEY_DELIVERY_OPTION, delivery);
+                    food_donation_data.put(Constant.KEY_FOOD_DONATION_CONFIRMATION, confirmation);
 
                     list.add(food_donation_data);
                 }
@@ -161,8 +165,8 @@ public class FoodDonateHistoryActivity extends AppCompatActivity {
 
         ListAdapter adapter = new SimpleAdapter(
                 FoodDonateHistoryActivity.this, list, R.layout.foodhistory_items,
-                new String[]{Constant.KEY_QUANTITY_FOOD, Constant.KEY_DONATION_DATE, Constant.KEY_DONATION_TIME},
-                new int[]{R.id.food_quantity_tv, R.id.delivery_date_tv, R.id.delivery_time_tv});
+                new String[]{Constant.KEY_QUANTITY_FOOD, Constant.KEY_DONATION_DATE, Constant.KEY_DONATION_TIME,Constant.KEY_FOOD_DONATION_CONFIRMATION},
+                new int[]{R.id.food_quantity_tv, R.id.delivery_date_tv, R.id.delivery_time_tv,R.id.food_confirmation_tv});
         CustomList.setAdapter(adapter);
     }
 

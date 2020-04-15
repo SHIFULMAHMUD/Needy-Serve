@@ -4,38 +4,30 @@
     android:id="@+id/relative_list"
     android:padding="5dp"
     android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_weight="3.5">
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:padding="5dp"
-            android:id="@+id/list_icon"
-            android:src="@drawable/order"/>
 
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_weight="1">
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#99A1AC"
+            android:layout_marginTop="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:text="Food Quantity \n(in Person) :"
+                android:gravity="center"
+                android:text="Food Quantity (Person) :"
                 android:textSize="15sp"
                 />
             <TextView
@@ -48,15 +40,20 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#99A1AC"
+            android:layout_marginTop="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:text="Delivery Date :"
@@ -72,6 +69,11 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#99A1AC"
+            android:layout_marginTop="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +81,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:text="Delivery Time :"
@@ -95,5 +98,39 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#99A1AC"
+            android:layout_marginTop="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Donation Confirmation :"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:id="@+id/food_confirmation_tv"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#99A1AC"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
     </LinearLayout>

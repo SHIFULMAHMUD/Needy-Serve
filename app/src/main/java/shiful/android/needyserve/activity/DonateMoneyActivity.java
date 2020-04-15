@@ -130,6 +130,7 @@ public class DonateMoneyActivity extends AppCompatActivity {
         final String date = txtDate.getText().toString().trim();
         final String time = txtTime.getText().toString().trim();
         final String comment = comment_Et.getText().toString().trim();
+        final String status = "Pending";
 
 
         //Checking  field/validation
@@ -250,6 +251,7 @@ public class DonateMoneyActivity extends AppCompatActivity {
                     params.put(Constant.KEY_MD_DATE, date);
                     params.put(Constant.KEY_MD_TIME, time);
                     params.put(Constant.KEY_COMMENT, comment);
+                    params.put(Constant.KEY_STATUS_MONEY_DONATE, status);
 
                     Log.d("url_info",Constant.MONEY_DONATION_URL);
 

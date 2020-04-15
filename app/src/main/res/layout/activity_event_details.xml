@@ -172,7 +172,7 @@ tools:context=".activity.EventDetailsActivity">
                         android:layout_marginLeft="20dp"
                         android:layout_weight="0.5"
                         android:letterSpacing="0.025"
-                        android:text="Start Time:"
+                        android:text="Start Date:"
                         android:textColor="@android:color/black"
                         android:textSize="14dp" />
 
@@ -217,7 +217,7 @@ tools:context=".activity.EventDetailsActivity">
                         android:layout_marginLeft="20dp"
                         android:layout_weight="0.5"
                         android:letterSpacing="0.025"
-                        android:text="End Time:"
+                        android:text="End Date:"
                         android:textColor="@android:color/black"
 
                         android:textSize="14dp" />
