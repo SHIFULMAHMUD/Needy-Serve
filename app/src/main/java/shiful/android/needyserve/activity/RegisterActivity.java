@@ -187,6 +187,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String address = addressEt.getText().toString().trim();
         final String password = passwordET.getText().toString().trim();
         final String account_type = accouttypeET.getText().toString().trim();
+        final String status="Pending";
 
 
         //Checking  field/validation
@@ -286,6 +287,7 @@ public class RegisterActivity extends AppCompatActivity {
                     params.put(Constant.KEY_ADDRESS, address);
                     params.put(Constant.KEY_AC_TYPE, account_type);
                     params.put(Constant.KEY_PASSWORD, password);
+                    params.put(Constant.KEY_STATUS, status);
 
                     Log.d("url_info",Constant.SIGNUP_URL);
 
