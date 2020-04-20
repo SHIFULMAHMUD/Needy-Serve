@@ -140,7 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
                     final String cell = jo.getString(Constant.KEY_CELL);
                     final String division = jo.getString(Constant.KEY_DIV);
                     final String address = jo.getString(Constant.KEY_ADDRESS);
-                    String account_type = jo.getString(Constant.KEY_AC_TYPE);
+                    final String account_type = jo.getString(Constant.KEY_AC_TYPE);
 
                     //insert data into array for put extra
 

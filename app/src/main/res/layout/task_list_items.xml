@@ -5,6 +5,7 @@
     android:padding="5dp"
     android:layout_height="wrap_content">
 
+
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -15,15 +16,62 @@
         android:layout_alignParentStart="true"
         android:src="@drawable/task"/>
 
-    <TextView
-        android:id="@+id/txt_task_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@id/list_icon"
-        android:textColor="@android:color/black"
-        android:hint="Task Details"
-        android:textSize="16sp"
-        />
+        android:layout_toRightOf="@+id/list_icon"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Task :"
+                android:id="@+id/text1"
+                android:textColor="@android:color/black"></TextView>
+            <TextView
+                android:id="@+id/txt_task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/text1"
+                android:textColor="@android:color/black"
+                android:hint="Task Details"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#99A1AC"
+            android:layout_marginTop="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status :"
+                android:id="@+id/text2"
+                android:textColor="@android:color/black"></TextView>
+            <TextView
+                android:id="@+id/txt_task_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/text2"
+                android:textColor="@android:color/black"
+                android:hint="Task Status"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </RelativeLayout>

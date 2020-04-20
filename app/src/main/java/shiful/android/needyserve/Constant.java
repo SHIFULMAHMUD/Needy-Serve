@@ -7,8 +7,10 @@ public class Constant {
     public static final String SIGNUP_URL = MAIN_URL+"/register.php";
     public static final String LOGIN_URL = MAIN_URL+"/login.php";
     public static final String USER_VIEW_URL = MAIN_URL+"/view_user.php?cell=";
+    public static final String USER_CHECK_URL = MAIN_URL+"/checkuserlogin.php?cell=";
     public static final String EVENT_URL = MAIN_URL+"/events.php?";
-    public static final String TASK_URL = MAIN_URL+"/task.php?";
+    public static final String TASK_URL = MAIN_URL+"/task.php?cell=";
+    public static final String TASK_STATUS_URL = MAIN_URL+"/task_status.php";
     public static final String FOOD_DONATION_URL = MAIN_URL+"/donate_food.php";
     public static final String MONEY_DONATION_URL = MAIN_URL+"/donate_money.php";
     public static final String REVIEW_URL = MAIN_URL+"/review.php?cell=";
@@ -20,7 +22,7 @@ public class Constant {
 
 
     //Keys for server communications
-    public static final String KEY_ID = "id";
+
     public static final String KEY_NAME = "name";
     public static final String KEY_CELL = "cell";
     public static final String KEY_DIV = "division";
@@ -28,6 +30,8 @@ public class Constant {
     public static final String KEY_AC_TYPE = "account_type";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_STATUS = "status";
+
+    public static final String KEY_CHECK_STATUS = "status";
 
     public static final String KEY_UPDATE_NAME = "name";
     public static final String KEY_UPDATE_CELL = "cell";
@@ -50,6 +54,9 @@ public class Constant {
     public static final String KEY_TIME = "time";
     public static final String KEY_DELIVERY = "delivery_option";
     public static final String KEY_STATUS_FOOD_DONATE = "status";
+
+    public static final String KEY_TASK_CELL = "cell";
+    public static final String KEY_TASK_STATUS = "status";
 
     public static final String KEY_FOOD_DONOR_NAME = "name";
     public static final String KEY_FOOD_DONOR_MOBILE = "cell";
@@ -81,6 +88,7 @@ public class Constant {
     public static final String KEY_MONEY_DONATION_CONFIRMATION = "confirmation";
 
     public static final String KEY_TASK = "volunteer_task";
+    public static final String KEY_TASK_STATAS = "status";
 
     public static final String KEY_USERNAME = "name";
     public static final String KEY_USERCELL = "cell";
