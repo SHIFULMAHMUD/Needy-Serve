@@ -31,8 +31,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
@@ -45,7 +48,7 @@ public class DonateFoodActivity extends AppCompatActivity {
     RadioButton radioButtonOne;
     ProgressDialog loading;
     Button submitbtn;
-    String string_rb, getCell;
+    String string_rb, getCell, time;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
 
@@ -118,8 +121,18 @@ public class DonateFoodActivity extends AppCompatActivity {
 
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                if(hourOfDay>=0 && hourOfDay<12){
+                                    time = hourOfDay + " : " + minute + " AM";
+                                } else {
+                                    if(hourOfDay == 12){
+                                        time = hourOfDay + " : " + minute + " PM";
+                                    } else{
+                                        hourOfDay = hourOfDay -12;
+                                        time = hourOfDay + " : " + minute + " PM";
+                                    }
+                                }
 
-                                txtTime.setText(hourOfDay + ":" + minute);
+                                txtTime.setText(time);
                             }
                         }, mHour, mMinute, true);
                 timePickerDialog.show();

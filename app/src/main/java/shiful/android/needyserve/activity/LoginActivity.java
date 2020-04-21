@@ -222,18 +222,18 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                 {
 
                                     if (checkusertext != null && checkusertext.equals("Accepted")) {
-                                        Log.d("status",checkusertext);
+
                                         Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
                                         startActivity(intent);
                                         finish();
                                         Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     }
                                     else if (checkusertext != null && checkusertext.equals("Rejected")){
-                                        Log.d("status",checkusertext);
+
                                         Toasty.warning(LoginActivity.this, "Your access is not permitted.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
                                     }
                                     else if (checkusertext != null && checkusertext.equals("Pending")){
-                                        Log.d("status",checkusertext);
+
                                         Toasty.warning(LoginActivity.this, "Your account is not approved yet.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
                                     }
                                 }
@@ -241,18 +241,18 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                 {
 
                                     if (checkusertext != null && checkusertext.equals("Accepted")) {
-                                        Log.d("status",checkusertext);
+
                                         Intent intent = new Intent(LoginActivity.this, VolunteerActivity.class);
                                         startActivity(intent);
                                         finish();
                                         Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     }
                                     else if (checkusertext != null && checkusertext.equals("Rejected")){
-                                        Log.d("status",checkusertext);
+
                                         Toasty.warning(LoginActivity.this, "Your access is not permitted.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
                                     }
                                     else if (checkusertext != null && checkusertext.equals("Pending")){
-                                        Log.d("status",checkusertext);
+
                                         Toasty.warning(LoginActivity.this, "Your account is not approved yet.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
                                     }
                                 }

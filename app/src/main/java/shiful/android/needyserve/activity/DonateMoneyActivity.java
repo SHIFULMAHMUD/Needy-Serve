@@ -39,7 +39,7 @@ public class DonateMoneyActivity extends AppCompatActivity {
     EditText donor_name_Et,mobile_Et,address_Et,amount_Et,trx_id_Et,comment_Et,txtDate, txtTime;
     Button submit_button;
     ProgressDialog loading;
-    String getCell;
+    String getCell, time;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -103,7 +103,18 @@ public class DonateMoneyActivity extends AppCompatActivity {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-                                txtTime.setText(hourOfDay + ":" + minute);
+                                if(hourOfDay>=0 && hourOfDay<12){
+                                    time = hourOfDay + " : " + minute + " AM";
+                                } else {
+                                    if(hourOfDay == 12){
+                                        time = hourOfDay + " : " + minute + " PM";
+                                    } else{
+                                        hourOfDay = hourOfDay -12;
+                                        time = hourOfDay + " : " + minute + " PM";
+                                    }
+                                }
+
+                                txtTime.setText(time);
                             }
                         }, mHour, mMinute, true);
                 timePickerDialog.show();
