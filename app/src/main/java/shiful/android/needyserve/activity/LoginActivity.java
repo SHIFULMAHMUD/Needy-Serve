@@ -201,9 +201,9 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                         @Override
                         public void onResponse(String response) {
 
-                            Log.d("Rspns",""+response);
+                            Log.d("response",""+response);
                             //If we are getting success from server
-                            if (response.equals("success")) {
+                            if (response.equals("accept")) {
                                 //Creating a shared preference
 
                                 SharedPreferences sp = LoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -216,46 +216,81 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                 //Saving values to editor
                                 editor.commit();
                                 //Starting Home activity
-                                getData("");
 
                                 if (text.equals("Donor"))
                                 {
-
-                                    if (checkusertext != null && checkusertext.equals("Accepted")) {
-
                                         Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
                                         startActivity(intent);
                                         finish();
                                         Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else if (checkusertext != null && checkusertext.equals("Rejected")){
 
-                                        Toasty.warning(LoginActivity.this, "Your access is not permitted.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
-                                    }
-                                    else if (checkusertext != null && checkusertext.equals("Pending")){
 
-                                        Toasty.warning(LoginActivity.this, "Your account is not approved yet.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
-                                    }
                                 }
                                 if (text.equals("Volunteer"))
                                 {
-
-                                    if (checkusertext != null && checkusertext.equals("Accepted")) {
-
                                         Intent intent = new Intent(LoginActivity.this, VolunteerActivity.class);
                                         startActivity(intent);
                                         finish();
                                         Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else if (checkusertext != null && checkusertext.equals("Rejected")){
 
-                                        Toasty.warning(LoginActivity.this, "Your access is not permitted.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
-                                    }
-                                    else if (checkusertext != null && checkusertext.equals("Pending")){
-
-                                        Toasty.warning(LoginActivity.this, "Your account is not approved yet.\nPlease contact with Service Provider or Admin ", Toast.LENGTH_LONG).show();
-                                    }
                                 }
+
+                                loading.dismiss();
+                            }
+                            else if (response.equals("reject")) {
+                                //Creating a shared preference
+
+                                SharedPreferences sp = LoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                                //Creating editor to store values to shared preferences
+                                SharedPreferences.Editor editor = sp.edit();
+                                //Adding values to editor
+                                editor.putString(Constant.CELL_SHARED_PREF, cell);
+
+                                //Saving values to editor
+                                editor.commit();
+                                //Starting Home activity
+
+                                if (text.equals("Donor"))
+                                {
+                                    Toasty.error(LoginActivity.this, "User Blocked!\nPlease contact with Service Provider", Toast.LENGTH_LONG).show();
+
+
+                                }
+                                if (text.equals("Volunteer"))
+                                {
+                                    Toasty.error(LoginActivity.this, "User Blocked!\nPlease contact with Service Provider", Toast.LENGTH_LONG).show();
+
+                                }
+
+                                loading.dismiss();
+                            }
+                            else if (response.equals("pending")) {
+                                //Creating a shared preference
+
+                                SharedPreferences sp = LoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                                //Creating editor to store values to shared preferences
+                                SharedPreferences.Editor editor = sp.edit();
+                                //Adding values to editor
+                                editor.putString(Constant.CELL_SHARED_PREF, cell);
+
+                                //Saving values to editor
+                                editor.commit();
+                                //Starting Home activity
+
+                                if (text.equals("Donor"))
+                                {
+                                    Toasty.warning(LoginActivity.this, "User approval still pending!\nPlease contact with Service Provider", Toast.LENGTH_LONG).show();
+
+
+                                }
+                                if (text.equals("Volunteer"))
+                                {
+                                    Toasty.warning(LoginActivity.this, "User approval still pending!\nPlease contact with Service Provider", Toast.LENGTH_LONG).show();
+
+                                }
+
                                 loading.dismiss();
                             }
                             else if(response.equals("failure")) {
@@ -300,78 +335,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             //Adding the string request to the queue
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
-        }
-
-    }
-
-    private void getData(String text) {
-
-
-        //for showing progress dialog
-        loading = new ProgressDialog(LoginActivity.this);
-        loading.setIcon(R.drawable.wait_icon);
-        loading.setTitle("Loading");
-        loading.setMessage("Please wait....");
-        loading.show();
-
-        String URL = Constant.USER_CHECK_URL+getCell;
-        Log.d("SP_URL",URL);
-        StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                loading.dismiss();
-                showJSON(response);
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        loading.dismiss();
-                        Toasty.error(LoginActivity.this, "Network Error!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-        requestQueue.add(stringRequest);
-    }
-
-
-
-    private void showJSON(String response) {
-
-        //Create json object for receiving json data
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(response);
-            JSONArray result = jsonObject.getJSONArray(Constant.JSON_ARRAY);
-
-
-            if (result.length()==0)
-            {
-                Toasty.info(LoginActivity.this, "No Data Available!", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
-
-                startActivity(intent);
-
-            }
-
-            else {
-
-                for (int i = 0; i < result.length(); i++) {
-                    JSONObject jo = result.getJSONObject(i);
-
-                    final String status = jo.getString(Constant.KEY_CHECK_STATUS);
-
-
-                    userAccountStatus[i] = status;
-                    checkusertext=status;
-
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
 
     }
