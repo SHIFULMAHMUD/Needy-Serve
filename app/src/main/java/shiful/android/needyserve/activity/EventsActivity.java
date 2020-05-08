@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,12 +56,12 @@ public class EventsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Events");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
-        btnSearch=findViewById(R.id.button_search);
-        txtSearch=findViewById(R.id.text_search);
+        /*btnSearch=findViewById(R.id.button_search);
+        txtSearch=findViewById(R.id.text_search);*/
         CustomList=(ListView)findViewById(R.id.event_list);
         //call function to get data
         getData("");
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        /*btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -77,7 +78,7 @@ public class EventsActivity extends AppCompatActivity {
 
             }
         });
-
+*/
     }
 
 
@@ -91,6 +92,7 @@ public class EventsActivity extends AppCompatActivity {
         loading.show();
 
         String URL = Constant.EVENT_URL+"&text="+text;
+        Log.d("url",URL);
 
         StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
             @Override

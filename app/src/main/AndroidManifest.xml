@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="shiful.android.needyserve">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.UpdateReviewActivity"></activity>
+
         <activity android:name=".activity.ViewAllReviewActivity" />
         <activity android:name=".activity.MoneyDonateHistoryActivity" />
         <activity android:name=".activity.FoodDonateHistoryActivity" />
@@ -21,6 +26,7 @@
         <activity android:name=".activity.ReviewActivity" />
         <activity android:name=".activity.DonateMoneyActivity" />
         <activity android:name=".activity.DonateFoodActivity" />
+        <activity android:name=".activity.UpdateReviewActivity"/>
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -40,10 +46,5 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

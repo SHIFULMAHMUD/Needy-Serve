@@ -45,8 +45,8 @@ public class TaskActivity extends AppCompatActivity {
     private ProgressDialog loading;
     int MAX_SIZE=999;
     String getCell;
-
-
+    String taskid;
+    public String taskId[]=new String[MAX_SIZE];
     public String taskDetails[]=new String[MAX_SIZE];
     public String taskStatus[]=new String[MAX_SIZE];
 
@@ -126,17 +126,18 @@ public class TaskActivity extends AppCompatActivity {
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject jo = result.getJSONObject(i);
 
-
+                    String id = jo.getString(Constant.KEY_TASK_ID);
                     String task = jo.getString(Constant.KEY_TASK);
                     String status = jo.getString(Constant.KEY_TASK_STATAS);
 
                     //insert data into array for put extra
-
+                    taskId[i]=id;
                     taskDetails[i] = task;
                     taskStatus[i] = status;
 
                     //put value into Hashmap
                     HashMap<String, String> task_data = new HashMap<>();
+                    task_data.put(Constant.KEY_TASK_ID, id);
                     task_data.put(Constant.KEY_TASK, task);
                     task_data.put(Constant.KEY_TASK_STATAS, status);
                     list.add(task_data);
@@ -154,7 +155,8 @@ public class TaskActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final String[] taskList = {"Completed", "Not Completed"};
-
+                taskid=taskId[position];
+                Log.d("task id",taskid);
                 AlertDialog.Builder builder = new AlertDialog.Builder(TaskActivity.this);
                 builder.setTitle("Task Complete?");
 
@@ -242,7 +244,7 @@ public class TaskActivity extends AppCompatActivity {
                     Map<String, String> params = new HashMap<>();
                     //Adding parameters to request
 
-
+                    params.put(Constant.KEY_TASK_IID, taskid);
                     params.put(Constant.KEY_TASK_CELL, getCell);
                     params.put(Constant.KEY_TASK_STATUS, status);
 
@@ -304,7 +306,7 @@ public class TaskActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 //Adding parameters to request
 
-
+                params.put(Constant.KEY_TASK_IID, taskid);
                 params.put(Constant.KEY_TASK_CELL, getCell);
                 params.put(Constant.KEY_TASK_STATUS, status);
 

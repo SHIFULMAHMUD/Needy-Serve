@@ -281,7 +281,10 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
                                 if (text.equals("Donor"))
                                 {
-                                    Toasty.warning(LoginActivity.this, "User approval still pending!\nPlease contact with Service Provider", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(LoginActivity.this, DonorActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
 
                                 }

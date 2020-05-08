@@ -55,6 +55,7 @@ public class Constant {
     public static final String KEY_DELIVERY = "delivery_option";
     public static final String KEY_STATUS_FOOD_DONATE = "status";
 
+    public static final String KEY_TASK_IID = "task_id";
     public static final String KEY_TASK_CELL = "cell";
     public static final String KEY_TASK_STATUS = "status";
 
@@ -89,6 +90,7 @@ public class Constant {
 
     public static final String KEY_TASK = "volunteer_task";
     public static final String KEY_TASK_STATAS = "status";
+    public static final String KEY_TASK_ID = "task_id";
 
     public static final String KEY_USERNAME = "name";
     public static final String KEY_USERCELL = "cell";
