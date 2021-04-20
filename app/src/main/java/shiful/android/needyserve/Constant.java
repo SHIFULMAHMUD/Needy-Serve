@@ -2,7 +2,7 @@ package shiful.android.needyserve;
 
 public class Constant {
 
-    public static final String MAIN_URL = "http://medicalsystem.cf/needyserve/android";
+    public static final String MAIN_URL = "http://needyserve.cf/android/";
 
     public static final String SIGNUP_URL = MAIN_URL+"/register.php";
     public static final String LOGIN_URL = MAIN_URL+"/login.php";

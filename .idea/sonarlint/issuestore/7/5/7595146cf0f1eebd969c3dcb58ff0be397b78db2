@@ -1,0 +1,67 @@
+
+f
+java:S1301i"KReplace this "switch" statement by "if" statements to increase readability.(¼œóÛüÿÿÿÿ
+h
+java:S1192á"QDefine a constant instead of duplicating this literal "Login Successful" 3 times.(Üó©ı
+e
+java:S1192a"JDefine a constant instead of duplicating this literal "Volunteer" 4 times.(³ß©øÿÿÿÿ
+a
+java:S1192a"FDefine a constant instead of duplicating this literal "Donor" 4 times.(³ß©øÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢¦Óİüÿÿÿÿ
+x
+java:S1104="]Make userAccountStatus a static final constant or non-public and provide accessors if needed.(âÄ¡èşÿÿÿÿ
+P
+java:S1128"5Remove this unused import 'android.widget.ImageView'.(ú¯ëàüÿÿÿÿ
+V
+java:S1128
+";Remove this unused import 'android.graphics.BitmapFactory'.(âàºÍûÿÿÿÿ
+N
+java:S1128$"3Remove this unused import 'org.json.JSONException'.(¹Ó·úÿÿÿÿ
+K
+java:S1128%"0Remove this unused import 'org.json.JSONObject'.(œÖ´üşÿÿÿÿ
+I
+java:S1128	"4Remove this unused import 'android.graphics.Bitmap'.(¾ì
+J
+java:S1128#"/Remove this unused import 'org.json.JSONArray'.(¬¸Ê’üÿÿÿÿ
+˜
+java:S1186â"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(á¬‡İ
+
+java:S1186ì"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×åó«øÿÿÿÿ
+m
+java:S3008:"WRename this field "back_pressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ¼ÑÄ
+@
+java:S16594"*Declare "etxtPassword" on a separate line.(ï”¡”
+A
+java:S16594"+Declare "accouttypeEdt" on a separate line.(ï”¡”
+A
+java:S16596"+Declare "checkusertext" on a separate line.(®¡×®
+m	java:S116<"SRename this field "MAX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”üÇøşÿÿÿÿ
+l	java:S116>"WRename this field "rem_userpass" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¬Ë
+L
+java:S18749"6Remove this use of "ProgressDialog"; it is deprecated.(Ï’Ú
+S
+java:S1197="8Move the array designator from the variable to the type.(âÄ¡èşÿÿÿÿ
+[
+java:S1117R"ERename "sharedPreferences" which hides the field declared at line 63.(½Ìúğ
+d
+java:S1871o"IThis case's code block is the same as the block for the case on line 106.(ªëÅŞúÿÿÿÿ
+<	java:S131i""Add a default case to this switch.(¼œóÛüÿÿÿÿ
+Y
+java:S1126‰"BReplace this if-then-else statement by a single method invocation.(˜·Øã
+d	java:S100¥"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¥˜–
+i
+java:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 35 to the 15 allowed.(Ç¥˜–
+R
+java:S1874À"6Remove this use of "ProgressDialog"; it is deprecated.(ú€˜ùşÿÿÿÿ
+Q
+java:S1117Ô":Rename "editor" which hides the field declared at line 64.(Íµ’ı
+Q
+java:S1117ö":Rename "editor" which hides the field declared at line 64.(Íµ’ı
+Q
+java:S1117’":Rename "editor" which hides the field declared at line 64.(Íµ’ı
+M
+java:S2696Œ"6Make the enclosing method "static" or remove this set.(é‘
+G
+java:S1172"+Remove this unused method parameter "View".(¢¦Óİüÿÿÿÿ
+W	java:S125Á"<This block of commented-out lines of code should be removed.(’¬…±şÿÿÿÿ
+R	java:S125ı"<This block of commented-out lines of code should be removed.(•´É—
